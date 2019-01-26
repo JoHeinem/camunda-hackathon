@@ -3,7 +3,7 @@ package org.camunda.bpm.spring.boot.example.webapp.delegate;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 
-/**import java.io.UnsupportedEncodingException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,15 +23,10 @@ import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;*/
+import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class SendMailDelegate implements JavaDelegate {
-  @Override
-  public void execute(DelegateExecution delegateExecution) throws Exception {
-
-  }
-/**
   private static final String CONTEXT_KEY_BASE_URL = "baseUrl";
 
   @Inject MailProperties mailProperties;
@@ -275,5 +270,5 @@ public class SendMailDelegate implements JavaDelegate {
 
   private boolean isSimulation() {
     return Boolean.parseBoolean(mailProperties.getProperties().get("simulation"));
-  }*/
+  }
 }
