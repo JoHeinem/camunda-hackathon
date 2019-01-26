@@ -3,7 +3,7 @@
 
   <div class="form-group">
     <label class="control-label col-md-4"
-           for="invoiceDocumentUpload">Upload your Invoice Document</label>
+           for="invoiceDocumentUpload">Upload your Travel Expanse Document</label>
     <div class="col-md-8">
       <input type="file"
              id="invoiceDocumentUpload"
@@ -40,16 +40,16 @@
 
   <div class="form-group">
     <label class="control-label col-md-4"
-           for="creditor">Creditor</label>
+           for="name">Name</label>
     <div class="col-md-8">
-      <input cam-variable-name="creditor"
+      <input cam-variable-name="name"
              cam-variable-type="String"
-             id="creditor"
+             id="name"
              class="form-control"
              type="text"
              required />
       <div class="help">
-        (e.g. &quot;Great Pizza for Everyone Inc.&quot;)
+        (e.g. &quot;Type in your name, please.&quot;)
       </div>
     </div>
   </div>
@@ -78,31 +78,15 @@
 
   <div class="form-group">
     <label class="control-label col-md-4"
-           for="amount">Invoice Category</label>
+           for="amount">Category</label>
     <div class="col-md-8">
-      <select cam-variable-name="invoiceCategory"
+      <select cam-variable-name="Category"
               cam-variable-type="String"
               class="form-control">
-        <option>Travel Expenses</option>
-        <option>Misc</option>
-        <option>Software License Costs</option>
+        <option>Deutschland</option>
+        <option>Europa</option>
+        <option>Weltweit</option>
       </select>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label class="control-label col-md-4"
-           for="invoiceNumber">Invoice Number</label>
-    <div class="col-md-8">
-      <input cam-variable-name="invoiceNumber"
-             cam-variable-type="String"
-             id="invoiceNumber"
-             class="form-control"
-             type="text"
-             required />
-      <div class="help">
-        (e.g. &quot;I-12345&quot;)
-      </div>
     </div>
   </div>
 
