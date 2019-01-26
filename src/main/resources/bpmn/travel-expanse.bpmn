@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1vajlsc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1vajlsc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.0.1">
   <bpmn:process id="TravelExpanse" name="Travel Expanse" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Handed in travel expanse&#10;" camunda:formKey="embedded:app:webapp/forms/start-form.html">
       <bpmn:outgoing>SequenceFlow_1iscthf</bpmn:outgoing>
@@ -44,7 +44,7 @@
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="EndEvent_1aktqq9" name="Travel expanse approved&#10;">
-      <bpmn:incoming>SequenceFlow_1oe09q2</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_091f4u0</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_09j2s6m" sourceRef="Task_1q5pbxc" targetRef="Task_0ypzj4y" />
     <bpmn:sequenceFlow id="SequenceFlow_0hl2kof" sourceRef="Task_0ypzj4y" targetRef="ExclusiveGateway_0f87iqu" />
@@ -53,7 +53,7 @@
       <bpmn:outgoing>SequenceFlow_1oe09q2</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0s1wmep</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_1oe09q2" name="yes" sourceRef="ExclusiveGateway_0f87iqu" targetRef="EndEvent_1aktqq9">
+    <bpmn:sequenceFlow id="SequenceFlow_1oe09q2" name="yes" sourceRef="ExclusiveGateway_0f87iqu" targetRef="Task_03hk4ng">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${approved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="EndEvent_1c4zbyb" name="Travel expanse rejected&#10;">
@@ -69,6 +69,11 @@
       <bpmn:incoming>SequenceFlow_09j2s6m</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0hl2kof</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_091f4u0" sourceRef="Task_03hk4ng" targetRef="EndEvent_1aktqq9" />
+    <bpmn:serviceTask id="Task_03hk4ng" name="ArchiveTaskExternal" camunda:type="external" camunda:topic="Archive">
+      <bpmn:incoming>SequenceFlow_1oe09q2</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_091f4u0</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TravelExpanse">
@@ -131,9 +136,9 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1aktqq9_di" bpmnElement="EndEvent_1aktqq9">
-        <dc:Bounds x="1190" y="57" width="36" height="36" />
+        <dc:Bounds x="1402" y="57" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1170" y="100" width="77" height="36" />
+          <dc:Bounds x="1383" y="100" width="76" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_09j2s6m_di" bpmnElement="SequenceFlow_09j2s6m">
@@ -160,7 +165,7 @@
         <di:waypoint x="1105" y="75" />
         <di:waypoint x="1190" y="75" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1139" y="57" width="19" height="12" />
+          <dc:Bounds x="1114" y="52" width="17" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_1c4zbyb_di" bpmnElement="EndEvent_1c4zbyb">
@@ -185,6 +190,13 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_1t6tlef_di" bpmnElement="Task_0ypzj4y">
         <dc:Bounds x="888" y="35" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_091f4u0_di" bpmnElement="SequenceFlow_091f4u0">
+        <di:waypoint x="1290" y="75" />
+        <di:waypoint x="1402" y="75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0ix603o_di" bpmnElement="Task_03hk4ng">
+        <dc:Bounds x="1190" y="35" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
