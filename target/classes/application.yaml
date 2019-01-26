@@ -2,6 +2,29 @@ camunda.bpm:
   webapp:
     index-redirect-enabled: true
   admin-user:
-    id: kermit
-    password: superSecret
+    id: k
+    password: k
+    
+spring:
+    mail:
+        protocol: smtp
+        host: smtp.tolina.local
+        port: 25
+        # username: USER
+        # password: PASSWORD
+        properties:
+            simulation: true
+            base-url: http://localhost:8080
+            sender: noreply@arxes-tolina.de
+            # sender-alias: noreply-kommconnect
+            # https://javaee.github.io/javamail/docs/api/com/sun/mail/smtp/package-summary.html
+            # mail.smtp.auth: true
+            # mail.smtp.starttls.enable: true
+            # https://javaee.github.io/javamail/docs/api/com/sun/mail/imap/package-summary.html
+            # mail.store.protocol: imaps
+            # mail.imaps.host: outlook.office365.com
+            # mail.imaps.port: 993
+            # mail.imaps.timeout: 10000
+            # mail.imap.partialfetch: false
+            # https://javaee.github.io/javamail/docs/api/com/sun/mail/pop3/package-summary.html
 
