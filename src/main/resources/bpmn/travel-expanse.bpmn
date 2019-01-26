@@ -9,6 +9,9 @@
       <bpmn:extensionElements>
         <camunda:inputOutput>
           <camunda:inputParameter name="mail_template">Antrag Reisekosten über ${amount}</camunda:inputParameter>
+          <camunda:inputParameter name="mail_subject">Reisekostenantrag ${amount}</camunda:inputParameter>
+          <camunda:inputParameter name="mail_to">robert.kersten@arxes-tolina.de</camunda:inputParameter>
+          <camunda:inputParameter name="mail_cc" />
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_1iscthf</bpmn:incoming>

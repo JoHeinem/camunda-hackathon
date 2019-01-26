@@ -40,11 +40,19 @@ public class SendMailDelegate implements JavaDelegate {
     LOGGER.info("hello {}", execution.getVariable("amount"));
 
     Object mail_template = execution.getVariable("mail_template");
+    Object mail_subject = execution.getVariable("mail_subject");
+    Object mail_to = execution.getVariable("mail_to");
+    Object mail_cc = execution.getVariable("mail_cc");
+
+    if (mail_to == null && mail_cc == null) {
+      LOGGER.error("mail_to and mail_cc not set - mail _not_ sent");
+      throw new RuntimeException("mail_to and mail_cc not set - mail _not_ sent");
+    }
 
     sendMail(
-        "robert.kersten@arxes-tolina.de",
-        "",
-        "DEMO",
+        mail_to != null ? mail_to.toString() : "",
+        mail_cc != null ? mail_cc.toString() : "",
+        mail_subject != null ? mail_subject.toString() : "",
         mail_template != null ? mail_template.toString() : "Variable 'mail_template' not found",
         execution.getVariables());
   }
@@ -59,7 +67,7 @@ public class SendMailDelegate implements JavaDelegate {
     cc.emailAddresses = c;
 
     RenderedMailTemplate renderedMailTemplate = new RenderedMailTemplate();
-    renderedMailTemplate.subject = subject;
+    renderedMailTemplate.subject = renderContent(subject, variables);
     renderedMailTemplate.content = renderContent(content, variables);
     renderedMailTemplate.templateType = probeTemplateType(content);
 
