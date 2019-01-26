@@ -3,11 +3,11 @@
 
   <div class="form-group">
     <label class="control-label col-md-4"
-           for="invoiceDocumentUpload">Upload your Travel Expanse Document</label>
+           for="travelExpanseDocumentUpload">Upload your Travel Expanse Document</label>
     <div class="col-md-8">
       <input type="file"
-             id="invoiceDocumentUpload"
-             cam-variable-name="invoiceDocument"
+             id="travelExpanseDocumentUpload"
+             cam-variable-name="travelExpanseDocument"
              cam-variable-type="File"
              cam-max-filesize="10000000"
              class="form-control"/>
@@ -16,7 +16,7 @@
   </div>
 
   <script cam-script type="text/form-script">
-    var fileUpload = $('#invoiceDocumentUpload');
+    var fileUpload = $('#travelExpanseDocumentUpload');
     var fileUploadHelpBlock = $('.help-block', fileUpload.parent());
 
     function flagFileUpload() {
@@ -78,10 +78,11 @@
 
   <div class="form-group">
     <label class="control-label col-md-4"
-           for="amount">Category</label>
+           for="category">Category</label>
     <div class="col-md-8">
-      <select cam-variable-name="Category"
+      <select cam-variable-name="category"
               cam-variable-type="String"
+              id="category"
               class="form-control">
         <option>Deutschland</option>
         <option>Europa</option>
