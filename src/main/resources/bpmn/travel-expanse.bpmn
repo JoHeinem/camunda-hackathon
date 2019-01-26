@@ -52,7 +52,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0s1wmep" name="no" sourceRef="ExclusiveGateway_0f87iqu" targetRef="EndEvent_1momw6q">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!financialDepartmentApproved}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:userTask id="Task_0ypzj4y" name="Approve travel expanse&#10;">
+    <bpmn:userTask id="Task_0ypzj4y" name="Approve travel expanse&#10;" camunda:formKey="embedded:app:webapp/forms/approve-travel-expanse.html">
       <bpmn:incoming>SequenceFlow_09j2s6m</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0hl2kof</bpmn:outgoing>
     </bpmn:userTask>
