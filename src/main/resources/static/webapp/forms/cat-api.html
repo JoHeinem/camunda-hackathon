@@ -1,0 +1,31 @@
+<form class="form-horizontal"
+      role="form">
+
+  <p>Do you like this cat picture?</p>
+
+<!-- src="http://thecatapi.com/api/images/get?rnd=1&v=<?php echo Date('Y.m.d.G.i.s')?>"; 
+  	data-image-src="http://thecatapi.com/api/images/get?rnd=1&v=<?php echo Date('Y.m.d.G.i.s')?>" -->
+  <div class="form-group">
+  	<img id="image" class="confluence-embedded-image confluence-external-resource" height="250">
+  </div>
+  
+  <script type="text/javascript">
+  	document.getElementById("image").src = "http://thecatapi.com/api/images/get?rnd=1&v="+ new Date().getTime();
+  	//document.getElementById("image").data-image-src = "http://thecatapi.com/api/images/get?rnd=1&v="+ new Date().getTime();
+  </script>
+
+  <div class="form-group">
+    <div class="col-md-10 col-md-offset-2">
+      <div class="checkbox">
+        <label>
+          <input cam-variable-name="catApproved"
+                 cam-variable-type="Boolean"
+                 type="checkbox"
+                 name="catApproved"
+                 class="form-control" />
+          I like it!
+        </label>
+      </div>
+    </div>
+  </div>
+</form>

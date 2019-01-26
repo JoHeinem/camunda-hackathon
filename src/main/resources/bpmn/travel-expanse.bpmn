@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1vajlsc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="2.2.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1vajlsc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.14.0">
   <bpmn:process id="TravelExpanse" name="Travel Expanse" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Handed in travel expanse&#10;" camunda:formKey="embedded:app:webapp/forms/start-form.html">
       <bpmn:outgoing>SequenceFlow_1iscthf</bpmn:outgoing>
@@ -17,9 +17,9 @@
       <bpmn:incoming>SequenceFlow_1iscthf</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1qtz2l2</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1qtz2l2" sourceRef="Task_1grxsas" targetRef="Task_06a6627" />
-    <bpmn:userTask id="Task_06a6627" name="Approve travel expanse&#10;" camunda:formKey="embedded:app:webapp/forms/approve-travel-expanse.html">
-      <bpmn:incoming>SequenceFlow_1qtz2l2</bpmn:incoming>
+    <bpmn:sequenceFlow id="SequenceFlow_1qtz2l2" sourceRef="Task_1grxsas" targetRef="Task_1ubei4c" />
+    <bpmn:userTask id="Task_06a6627" name="Approve travel expanse&#10;" camunda:formKey="embedded:app:webapp/forms/approve-travel-expanse.html" camunda:assignee="k">
+      <bpmn:incoming>SequenceFlow_1piwth2</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0lh4h63</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="ExclusiveGateway_04xrz7h" name="Is approved?&#10;">
@@ -69,34 +69,51 @@
       <bpmn:incoming>SequenceFlow_09j2s6m</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0hl2kof</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1n68pn7" sourceRef="Task_1ubei4c" targetRef="ExclusiveGateway_0ajcn16" />
+    <bpmn:userTask id="Task_1ubei4c" name="Like cat?" camunda:formKey="embedded:app:webapp/forms/cat-api.html" camunda:assignee="k">
+      <bpmn:incoming>SequenceFlow_1qtz2l2</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1ukkr6d</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1n68pn7</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0ajcn16" name="Like cat?">
+      <bpmn:incoming>SequenceFlow_1n68pn7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1piwth2</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1ukkr6d</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_1piwth2" name="yes" sourceRef="ExclusiveGateway_0ajcn16" targetRef="Task_06a6627">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${catApproved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_1ukkr6d" name="no" sourceRef="ExclusiveGateway_0ajcn16" targetRef="Task_1ubei4c">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!catApproved}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TravelExpanse">
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="-13" y="167" width="36" height="36" />
+        <dc:Bounds x="-81" y="167" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="-33" y="137" width="79" height="40" />
+          <dc:Bounds x="-101" y="137" width="80" height="36" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1iscthf_di" bpmnElement="SequenceFlow_1iscthf">
-        <di:waypoint x="23" y="185" />
-        <di:waypoint x="159" y="185" />
+        <di:waypoint x="-45" y="185" />
+        <di:waypoint x="91" y="185" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="46" y="160" width="90" height="20" />
+          <dc:Bounds x="-22" y="160" width="90" height="20" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ServiceTask_1267508_di" bpmnElement="Task_1grxsas">
-        <dc:Bounds x="159" y="145" width="100" height="80" />
+        <dc:Bounds x="91" y="145" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1qtz2l2_di" bpmnElement="SequenceFlow_1qtz2l2">
-        <di:waypoint x="259" y="185" />
-        <di:waypoint x="408" y="185" />
+        <di:waypoint x="191" y="185" />
+        <di:waypoint x="235" y="185" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="288.5" y="160" width="90" height="20" />
+          <dc:Bounds x="168" y="160" width="90" height="20" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_1mym9m1_di" bpmnElement="Task_06a6627">
-        <dc:Bounds x="408" y="145" width="100" height="80" />
+        <dc:Bounds x="471" y="145" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ExclusiveGateway_04xrz7h_di" bpmnElement="ExclusiveGateway_04xrz7h" isMarkerVisible="true">
         <dc:Bounds x="612" y="160" width="50" height="50" />
@@ -105,10 +122,10 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0lh4h63_di" bpmnElement="SequenceFlow_0lh4h63">
-        <di:waypoint x="508" y="185" />
+        <di:waypoint x="571" y="185" />
         <di:waypoint x="612" y="185" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="515" y="160" width="90" height="20" />
+          <dc:Bounds x="546.5" y="160" width="90" height="20" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_129kqu7_di" bpmnElement="SequenceFlow_129kqu7">
@@ -186,6 +203,38 @@
       <bpmndi:BPMNShape id="UserTask_1t6tlef_di" bpmnElement="Task_0ypzj4y">
         <dc:Bounds x="888" y="35" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1n68pn7_di" bpmnElement="SequenceFlow_1n68pn7">
+        <di:waypoint x="335" y="185" />
+        <di:waypoint x="372" y="186" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="353.5" y="164.5" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_0ey9iti_di" bpmnElement="Task_1ubei4c">
+        <dc:Bounds x="235" y="145" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0ajcn16_di" bpmnElement="ExclusiveGateway_0ajcn16" isMarkerVisible="true">
+        <dc:Bounds x="372" y="161" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="375" y="215" width="44" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1piwth2_di" bpmnElement="SequenceFlow_1piwth2">
+        <di:waypoint x="422" y="186" />
+        <di:waypoint x="471" y="185" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="437" y="165" width="19" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ukkr6d_di" bpmnElement="SequenceFlow_1ukkr6d">
+        <di:waypoint x="397" y="161" />
+        <di:waypoint x="397" y="101" />
+        <di:waypoint x="285" y="100" />
+        <di:waypoint x="285" y="145" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="335" y="80" width="12" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
