@@ -10,7 +10,7 @@
       <bpmn:outgoing>SequenceFlow_1qtz2l2</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SequenceFlow_1qtz2l2" sourceRef="Task_1grxsas" targetRef="Task_06a6627" />
-    <bpmn:userTask id="Task_06a6627" name="Approve travel expanse&#10;">
+    <bpmn:userTask id="Task_06a6627" name="Approve travel expanse&#10;" camunda:formKey="embedded:app:webapp/forms/approve-travel-expanse.html">
       <bpmn:incoming>SequenceFlow_1qtz2l2</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0lh4h63</bpmn:outgoing>
     </bpmn:userTask>
