@@ -1,0 +1,4 @@
+org/camunda/bpm/example/invoice/InvoiceProcessApplication.class
+org/camunda/bpm/example/invoice/DemoDataGenerator.class
+org/camunda/bpm/example/invoice/service/NotifyCreditorService.class
+org/camunda/bpm/example/invoice/service/ArchiveInvoiceService.class
